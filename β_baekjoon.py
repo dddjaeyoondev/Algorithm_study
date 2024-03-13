@@ -1,13 +1,34 @@
-from collections import deque
 import sys
+from collections import deque
 
-N = int(sys.stdin.readline())
+input = sys.stdin.readline
+n = int(input())
 
-card = deque([i for i in range(1, N + 1)])
+queue = deque()
 
-while len(card) > 1:
-    card.popleft()
-    num = card.popleft()
-    card.append(num)
+for i in range(n):
+    num = input().split()
 
-print(card[0])
+    if num[0] == "1":
+        queue.append(int(num[1]))
+
+    if num[0] == "2":
+        if len(queue) == 0:
+            print(-1)
+        else:
+            print(queue[len(queue) - 1])
+            queue.pop()
+    if num[0] == "3":
+        print(len(queue))
+
+    if num[0] == "4":
+        if len(queue) == 0:
+            print(1)
+        else:
+            print(0)
+
+    if num[0] == "5":
+        if len(queue) == 0:
+            print(-1)
+        else:
+            print(queue[len(queue) - 1])
